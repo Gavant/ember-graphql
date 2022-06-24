@@ -1,5 +1,5 @@
 {
-    "name": "ember-graphql",
+    "name": "@gavant/ember-graphql",
     "version": "0.0.0",
     "description": "The default blueprint for Embroider v2 addons.",
     "keywords": [
@@ -73,6 +73,6 @@
         "./addon-main.js": "./addon-main.js"
     },
     "volta": {
-        "extends": "../package.json"
+        "extends": "../../package.json"
     }
 }
