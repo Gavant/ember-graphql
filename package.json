@@ -8,7 +8,7 @@
         "packages/*"
     ],
     "scripts": {
-        "prepare": "yarn workspace @gavant/ember-graphql-auth run prepare",
+        "prepare": "yarn workspace @gavant/ember-graphql run prepare",
         "start": "npm-run-all --parallel start:*",
         "start:addon": "yarn workspace @gavant/ember-graphql run start",
         "start:test-app": "yarn workspace test-app run start",
