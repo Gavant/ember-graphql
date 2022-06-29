@@ -14,7 +14,7 @@ export default {
     plugins: [
         // These are the modules that users should be able to import from your
         // addon. Anything not listed here may get optimized away.
-        addon.publicEntrypoints(['index.ts']),
+        addon.publicEntrypoints(['decorators/index.ts', 'utils/index.ts']),
 
         ts({
             // can be changed to swc or other transpilers later
