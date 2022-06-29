@@ -1,0 +1,8 @@
+{{page-title "Application"}}
+{{outlet}}
+<ul>
+    {{#each this.model.data.users.data as |user|}}
+        <li>#{{user.id}} {{user.name}} ({{user.email}})</li>
+    {{/each}}
+</ul>
+{{if this.model.loading "Loading..."}}

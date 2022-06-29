@@ -12,9 +12,9 @@ import { getClient } from 'glimmer-apollo';
 export function setupApolloCacheShoebox(context: ApplicationInstance): void {
     const fastboot = context.lookup('service:fastboot') as FastbootService;
     const apolloCache = getClient(context).cache;
-    const shoebox = fastboot.get('shoebox');
+    const shoebox = fastboot?.get('shoebox');
 
-    if (fastboot.isFastBoot) {
+    if (fastboot?.isFastBoot) {
         // create a shoebox entry with a getter, so that the cache isn't actually
         // extracted until fastboot serializes the shoebox contents into the page
         // AFTER all the apollo queries have resolved.
@@ -24,7 +24,7 @@ export function setupApolloCacheShoebox(context: ApplicationInstance): void {
             }
         });
     } else {
-        const cacheContents = shoebox.retrieve('apollo-cache') as unknown as { cache: unknown };
+        const cacheContents = shoebox?.retrieve('apollo-cache') as unknown as { cache: unknown };
         if (cacheContents?.cache) {
             apolloCache.restore(cacheContents.cache);
         }

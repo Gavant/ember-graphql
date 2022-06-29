@@ -1,4 +1,4 @@
-import setupApolloClient from '@gavant/ember-graphql/utils';
+import { setupApolloClient } from '@gavant/ember-graphql/utils';
 
 import ENV from 'test-app/config/environment';
 

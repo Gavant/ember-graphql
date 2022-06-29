@@ -10,6 +10,7 @@ export type InputMaybe<T> = Maybe<T>;
  * @param {(Array<keyof T> | keyof T)} propertyNames
  * @returns {itemToCheck is T}
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const guard = <T>(itemToCheck: any, propertyNames: Array<keyof T> | keyof T): itemToCheck is T => {
     return Array.isArray(propertyNames)
         ? Object.keys(itemToCheck as T).some((key) => propertyNames.indexOf(key as keyof T) >= 0)
