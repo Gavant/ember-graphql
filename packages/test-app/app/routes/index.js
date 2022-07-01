@@ -31,8 +31,4 @@ export default class ApplicationRoute extends Route {
     async model() {
         return this.query;
     }
-
-    error(errors) {
-        console.log('ERROR!', errors);
-    }
 }

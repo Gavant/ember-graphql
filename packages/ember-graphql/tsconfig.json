@@ -19,10 +19,7 @@
         "inlineSources": true,
         "baseUrl": "./",
         "module": "es6",
-        "experimentalDecorators": true,
-        "paths": {
-            "fetch": ["../../node_modules/ember-fetch"]
-        }
+        "experimentalDecorators": true
     },
     "include": ["src/**/*"],
     "exclude": ["dist/**/*"]

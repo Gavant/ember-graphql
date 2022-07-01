@@ -25,8 +25,7 @@
         "prepare": "yarn build"
     },
     "dependencies": {
-        "@embroider/addon-shim": "^1.0.0",
-        "ember-fetch": "^8.1.1"
+        "@embroider/addon-shim": "^1.0.0"
     },
     "devDependencies": {
         "@babel/core": "^7.17.0",

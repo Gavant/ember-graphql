@@ -5,4 +5,5 @@
         <li>#{{user.id}} {{user.name}} ({{user.email}})</li>
     {{/each}}
 </ul>
+{{log this.model.error}}
 {{if this.model.loading "Loading..."}}

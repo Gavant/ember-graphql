@@ -16,8 +16,6 @@ import { onError } from '@apollo/client/link/error';
 import SessionService from 'ember-simple-auth/services/session';
 import FastbootService from 'ember-cli-fastboot/services/fastboot';
 
-import fetch from 'fetch';
-
 import { guard } from './types';
 
 const DEFAULT_SSR_FORCE_FETCH_DELAY = 100;
@@ -25,6 +23,9 @@ const DEFAULT_SSR_FORCE_FETCH_DELAY = 100;
 interface ApolloConfiguration {
     // the API url that all apollo requests will be made to (e.g. "https://my-cool-api.com/graphql")
     baseUri?: string;
+    // The fetch implementation apollo will use to make network requests
+    // (if using fastboot, this currently will need to use ember-fetch)
+    fetch: ((input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>) | undefined;
     // configures general apollo client settings (e.g. client name/version header values, etc)
     client?: ApolloClientOptions<NormalizedCacheObject>;
     // configures apollo's caching behavior. most often this will be used to set custom field policies (for pagination, etc.)
@@ -42,7 +43,7 @@ export function setupApolloClient(config: ApolloConfiguration) {
         // @see https://www.apollographql.com/docs/react/api/link/introduction/
         const httpLink = createHttpLink({
             uri: config.baseUri,
-            fetch
+            fetch: config.fetch
         });
 
         // authentication headers
