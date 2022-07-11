@@ -7,7 +7,7 @@ export const defaultPaginationOptions = {
  * Paging function to handle loading more and checking if there are more to load after results are loaded
  *
  * @export
- * @param {{ data: string; hasMore: string }} keys
+ * @param {{ data: string; hasMore: string; limit?: string }} keys
  * @return {*}
  */
 export function pagination(keys: { data: string; hasMore: string; limit?: string }) {
@@ -24,14 +24,13 @@ export function pagination(keys: { data: string; hasMore: string; limit?: string
             if (queryResult) {
                 const param = {
                     variables: {
-                        paging: { limit, offset: queryResult.length }
+                        paging: { limit, offset: queryResult.items?.length ?? 0 }
                     }
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 } as any;
                 const result = await childFunction.apply(this, [param, ...args]);
                 const hasMoreKey = splitTarget[splitTarget.length - 1];
-                // TODO improve this to check `totalCount` meta field when available
-                const hasMore = (result?.data?.[hasMoreKey]?.length ?? 0) >= limit;
+                const hasMore = (result?.data?.[hasMoreKey]?.items?.length ?? 0) >= limit;
                 this[keys.hasMore] = hasMore;
             }
         };
